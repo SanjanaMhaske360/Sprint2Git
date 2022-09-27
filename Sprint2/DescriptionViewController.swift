@@ -26,8 +26,8 @@ struct AllProduct : Codable{
     var price: Int
 }
 
+//MARK: DescrptionTableViewCell class
 class DescriptionTableViewCell: UITableViewCell {
-    
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productTitle: UILabel!
@@ -35,9 +35,9 @@ class DescriptionTableViewCell: UITableViewCell {
 
 }
 
-
+// UIImageView extension
 extension UIImageView {
-    // MARK:
+    // MARK: getImageFromURL function
     func getImageFromURL(urlImageAddress: String) {
         guard let url = URL(string: urlImageAddress) else {
             return

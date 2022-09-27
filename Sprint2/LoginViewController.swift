@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
-    
+    // outlet for All Text Fields Labels and images
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!

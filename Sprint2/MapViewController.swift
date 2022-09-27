@@ -37,7 +37,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         if let location = locations.first {
             
             //Update Location
-            manager.stopUpdatingLocation()
+           // manager.stopUpdatingLocation()
             CustomerLocation(location)
         }
     }

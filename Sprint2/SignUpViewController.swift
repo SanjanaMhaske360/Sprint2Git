@@ -12,6 +12,7 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     
+    // outlet for All Text Fiels Labels and images
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userEmail: UITextField!

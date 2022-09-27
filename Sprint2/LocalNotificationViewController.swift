@@ -52,12 +52,12 @@ class LocalNotificationViewController: UIViewController ,UNUserNotificationCente
         
         //when Error Occued in Notification
         notificationCenter.add(request) { (error) in
-            print(error?.localizedDescription)
+          //  print(error?.localizedDescription)
+            print("Error Occured \(String(describing: error?.localizedDescription))")
         }
     
 
 }
 }
 
-// succesful
 
