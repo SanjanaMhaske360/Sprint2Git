@@ -203,11 +203,4 @@ class DescriptionViewController : UIViewController, UITableViewDelegate, UITable
             }
         }
     }
-    
-    
-    
-    
-    
-    
-        
   }
