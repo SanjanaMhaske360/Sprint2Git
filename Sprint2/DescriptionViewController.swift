@@ -172,12 +172,14 @@ class DescriptionViewController : UIViewController, UITableViewDelegate, UITable
        return cell
    }
   
+    //MARK: didSelectRowAt function
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell : UITableViewCell = tableView.cellForRow(at: indexPath)!
+        //cell color become green when user select cell
         selectedCell.contentView.backgroundColor = UIColor.green
         
     }
-    
+    //MARK: didDeselectRowAt function
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let selectedCell : UITableViewCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.white

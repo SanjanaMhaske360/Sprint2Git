@@ -265,11 +265,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SL6-sz-JDX">
-                                <rect key="frame" x="107" y="418" width="200" height="60"/>
+                                <rect key="frame" x="133" y="418" width="148.5" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="RBh-II-Xrc"/>
-                                    <constraint firstAttribute="width" constant="200" id="XwP-Kf-F3H"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -301,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ci3-DB-k8l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6900" y="474"/>
+            <point key="canvasLocation" x="6900.0000000000009" y="473.4375"/>
         </scene>
         <!--Cart-->
         <scene sceneID="2gv-ZH-rSE">
