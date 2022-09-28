@@ -34,29 +34,7 @@ class SignUpViewController: UIViewController {
         signUpBtn.layer.masksToBounds = true
         
     }
-    
-    
-    //MARK: Check Email And Password Exist in Coredata or not
-    func CheckForUserNameAndPasswordMatch(email: String) -> Bool {
-    var customer = [Customer]()
-    let app = (UIApplication.shared.delegate)  as! AppDelegate
-    let context = app.persistentContainer.viewContext
-    let fetchrequest = NSFetchRequest<NSManagedObject>(entityName: "Customer")
-    
-    //checking With formate Email And Password In Coredata
-    fetchrequest.predicate = NSPredicate(format: "email = %@", email )
-    do{
-        customer = try context.fetch(fetchrequest) as! [Customer]
-        //  if data Present in coredata then count will be 1
-        if(customer.count == 1){
-            return true
-        }
-    } catch {
-        print("error")
-    }
-    return false
-  }
-    
+
     
     //SignUp Button Action
     @IBAction func signUpButton(_ sender: Any) {
@@ -85,7 +63,7 @@ class SignUpViewController: UIViewController {
             else{
                 
                 //Alert If Email Already Exist in CoreData
-                if(CheckForUserNameAndPasswordMatch(email: userEmail.text!)){
+                if (Auth.auth().currentUser == nil){
                 openAlert(title: "Alert", message: "Email Already Exist", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
                     print("Email Exist!")}])
             }
@@ -112,20 +90,6 @@ class SignUpViewController: UIViewController {
                 
                 
             else {
-                    // Save All Input Data In  CoreData Dictionary
-                    let dict = ["name":userName.text ,"email":userEmail.text, "mobile":userMobile.text ,"password":userPassword.text]
-                    DatabaseHelper.shareInstance.save(object: dict as! [String : String])
-                    
-                    // PopUp When Data Saven in Coredata
-                    let alert = UIAlertController(title: "Data Save Successfully", message:"SignUp Completed" , preferredStyle: .alert)
-
-                    // add an action (button)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                    // show the alert
-                    self.present(alert, animated: true, completion: nil)
-                    print(" Data Save Succesfully")
-                
                 
                     // Save Data in FireBase
                     Auth.auth().createUser(withEmail: userEmail.text!, password: userPassword.text!) { (authResult,error) in
@@ -134,6 +98,14 @@ class SignUpViewController: UIViewController {
                             return
                         }
                     }
+                
+                // PopUp When Data Saven in Firebase
+                let alert = UIAlertController(title: "Data Save Successfully", message:"SignUp Completed" , preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                print(" Data Save Succesfully")
+                
                 }
             }
         }
@@ -145,9 +117,3 @@ class SignUpViewController: UIViewController {
     }
   }
 }
-
-
-    
-
-
-

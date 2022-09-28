@@ -82,35 +82,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    
-    //MARK: function for Checking EmailId And Password in Coredata Exist Or Not
-    
-    func CheckForUserNameAndPasswordMatch(email: String, password: String) -> Bool {
-        
-        //
-        var customer = [Customer]()
-        let app = (UIApplication.shared.delegate)  as! AppDelegate
-        let context = app.persistentContainer.viewContext
-        let fetchrequest = NSFetchRequest<NSManagedObject>(entityName: "Customer")
-        
-        //checking With formate Email And Password In Coredata
-        fetchrequest.predicate = NSPredicate(format: "email = %@ and password = %@", email,password)
-        
-        do{
-            customer = try context.fetch(fetchrequest) as! [Customer]
-          //  if data Present in coredata then count will be 1
-            if(customer.count == 1){
-                return true
-            }
-        }
-        catch {
-            print("error")
-        }
-        return false
-     }
-    
-    
-    
     // loginButton Action
     @IBAction func loginButton(_ sender: UIButton) {
         
@@ -134,14 +105,16 @@ class LoginViewController: UIViewController {
             }
 
             else  {
-                
-                // if  Email Exist
-                if(CheckForUserNameAndPasswordMatch(email: userName.text!, password: userPassword.text!)){
+               
 
                     // code for firebase Authentication
+                    // checking user exist in firebase or not
                     
                     Auth.auth().signIn(withEmail: userName.text!, password: userPassword.text!) { [weak self] authResult, err in
-                        guard let strongSelf = self else {return}
+                        guard let strongSelf = self else {
+                            return
+                            
+                        }
                         
                         if let err = err {
                             print(err.localizedDescription)
@@ -156,25 +129,14 @@ class LoginViewController: UIViewController {
                             self?.navigationController?.pushViewController(employeesVC, animated: true)
                         }
                     }
-                }
- 
                 
-                else {
-                    //if user Not Exist in coredata
-                    openAlert(title: "Alert", message: "User Not found", alertStyle: .alert, actionTitles: ["Please SignUp"], actionStyles: [.default], actions: [{ _ in print("Login Failed!")}])                }
             }
        }
- 
  
  
         else{
             openAlert(title: "Alert", message: "Please add detail.", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
                 print("Okay clicked!")}])
             }
-    
- 
    }
-    
-    
-
 }
