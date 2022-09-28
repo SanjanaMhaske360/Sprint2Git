@@ -61,7 +61,7 @@ var items = [String]()
 class DescriptionViewController : UIViewController, UITableViewDelegate, UITableViewDataSource
  {
     
-    
+    var selectArr = [String]()
 
     // connection of table View
     @IBOutlet weak var tableView: UITableView!
